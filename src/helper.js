@@ -13,8 +13,13 @@ function getDateTime(date, time) {
   return `${date} ${time}:00`;
 }
 
+function markAsDone(markAsDone) {
+  return markAsDone === "on";
+}
+
 module.exports = {
   getOffset,
   emptyOrRows,
   getDateTime,
+  markAsDone,
 };

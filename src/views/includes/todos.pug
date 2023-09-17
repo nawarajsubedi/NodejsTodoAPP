@@ -16,14 +16,17 @@ table#todoTable.table
             th(scope='col') Name
             th(scope='col') Description
             th(scope='col') Date Time
+            th(scope='col') Completed
             th(scope='col') Actions
     tbody
     each todo in todoList
         - var editLink = `/todo/${todo.id}/edit`;
         - var onclick = `deleteConfirm(${todo.id},'${todo.name}')`;
+        - var completed = todo.done === 1 ? 'Yes': 'No';
         tr
             td(scope="row") #{todo.id}
             td #{todo.name}
             td #{todo.description}
             td #{todo.date_time}
+            td #{completed}
             td <a href=#{editLink}><i class="fas fa-edit icon-green"></a></i>&nbsp &nbsp<i onclick="#{onclick}" class="fas fa-times icon-red"></i>

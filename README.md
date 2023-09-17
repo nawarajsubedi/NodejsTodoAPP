@@ -10,6 +10,8 @@ git@github.com:nawarajsubedi/NodejsTodoAPP.git
 # Install
 npm i
 
+run sql create table script
+
 # Start
 npm run start
 

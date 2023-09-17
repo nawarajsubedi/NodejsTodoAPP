@@ -1,6 +1,7 @@
 
 - var httpActionMethod = todo && todo.id  ? `/todo/${todo.id}/edit`: '/todo';
 - var btnName = todo && todo.id ? 'Change': 'Add';
+- var checked = todo && todo.done === 1 ? true: false;
 div.header-wrapper
     h4 <strong>Add task</strong>
     a(role="button" class="btn btn-default btn-sm" href="/todo/list") Back to list
@@ -19,5 +20,10 @@ form.todo-form(id="todoForm" role='form' method='POST' action=httpActionMethod)
     div.form-group
     label(for='time') Time:
     input#time.form-control(type='text', placeholder='Time' name='time' value= todo.time)
+    br
+    div.form-group.form-check
+        input(type="checkbox" checked=checked class="form-check-input" name="markAsDone" id="markAsDone")
+        label.form-check-label(for="markAsDome") &nbsp Completed
     div.form-group
     button.btn.btn-primary(type="button" id="btnSubmit") #{btnName}
+    input(type="hidden" id="taskId" value=todo.id)

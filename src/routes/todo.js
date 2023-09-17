@@ -12,7 +12,7 @@ router.get("/", async function (req, res, next) {
 // * @apiParam  {String} [name] name
 router.get("/checkExist", async function (req, res, next) {
   try {
-    res.json(await todo.checkExist(req.query.name));
+    res.json(await todo.checkExist(req.query.name, req.query.id));
   } catch (err) {
     console.error(`Error while checking tasks`, err.message);
     next(err);
@@ -116,12 +116,4 @@ router.delete("/:id", async function (req, res, next) {
   }
 });
 
-// router.get("/:id", async function (req, res, next) {
-//   try {
-//     res.json(await todo.search(req.params.id));
-//   } catch (err) {
-//     console.error(`Error while searching programming languages `, err.message);
-//     next(err);
-//   }
-// });
 module.exports = router;

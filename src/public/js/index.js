@@ -4,9 +4,10 @@
 
 $(document).on("click", "#btnSubmit", function () {
   var name = $("#name").val().trim();
+  var id = $("#taskId").val().trim();
   if (name)
     $.ajax({
-      url: `/todo/checkExist?name=${name.trim().toLowerCase()}`,
+      url: `/todo/checkExist?name=${name.trim().toLowerCase()}&id=${id}`,
       type: "GET",
       success: function (result) {
         if (!result) {
