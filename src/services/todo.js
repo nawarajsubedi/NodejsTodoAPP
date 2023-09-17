@@ -40,7 +40,9 @@ async function getById(id) {
 
 async function checkExist(name, id) {
   const data = await db.query(
-    `SELECT id FROM TODO WHERE name = '${name.toLowerCase()}'`
+    `SELECT id FROM TODO WHERE name = '${name.toLowerCase()} ${
+      id ? "AND id <>" + id : ""
+    }'`
   );
   return data?.length ? true : false;
 }
