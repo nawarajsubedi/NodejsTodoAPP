@@ -1,0 +1,29 @@
+div.header-wrapper
+    h4 <strong>Task list</strong>
+    a(role="button" class="btn btn-primary btn-sm" href="/todo") Add Task
+
+#successMessage
+if successMessage
+    div.alert.alert-success(role="alert") #{successMessage}
+#errorMessage
+if errorMessage
+    div.alert.alert-danger(role="alert") #{errorMessage}
+
+table#todoTable.table 
+    thead
+        tr 
+            th(scope='col') ID
+            th(scope='col') Name
+            th(scope='col') Description
+            th(scope='col') Date Time
+            th(scope='col') Actions
+    tbody
+    each todo in todoList
+        - var editLink = `/todo/${todo.id}/edit`;
+        - var onclick = `deleteConfirm(${todo.id},'${todo.name}')`;
+        tr
+            td(scope="row") #{todo.id}
+            td #{todo.name}
+            td #{todo.description}
+            td #{todo.date_time}
+            td <a href=#{editLink}><i class="fas fa-edit icon-green"></a></i>&nbsp &nbsp<i onclick="#{onclick}" class="fas fa-times icon-red"></i>
